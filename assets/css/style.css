@@ -4,30 +4,145 @@
 
 header{
   display: grid;
-  grid-template-columns: 90px auto 50px;
-  grid-template-rows: 90px;
-  text-align: middle;
+  grid-template-columns: 5.625rem auto 3.125rem;
+  grid-template-rows: 5.625rem;
 }
 
 header span{
   display: block;
-  margin-top: 8px;
+  margin-top: 0.125rem;
+}
+
+section{
+  display: grid;
+  grid-template-columns: 12.5rem auto 12.5rem;
+  grid-template-rows: 3.125rem;
+}
+
+input{
+  position: fixed;
+  left: -999px;
+}
+
+label{
+  cursor: pointer;
+}
+
+.boldic{
+  font-weight: bold;
+}
+
+.big{
+  font-size: 1.375rem;
+}
+
+.small{
+  font-size: 1.125rem;
+}
+
+.likes{
+  grid-template-columns: 6.5rem auto;
+  grid-template-rows: 2.3rem;
+}
+
+.likes img{
+  border-radius: 100%;
+  border: 0.13rem solid #f4f4f4;
+  margin-left: 0.85rem;
+  max-height: 2rem;
+}
+
+.likes #below{
+  position: relative;
+  right: 2rem;
+  z-index: -1;
+}
+
+.likes span{
+  position: relative;
+  right: 2rem;
+}
+
+.description{
+  margin: 0 1rem 0 1.2rem;
+  display: block;
+  word-break: break-all;
+}
+
+.description span{
+  color: grey;
+}
+
+.description div{
+  margin-top: 0.3rem;
+}
+
+.comment{
+  border-top: 1px solid #d3d3d3;
+  margin: 0.8rem 1rem auto 1.2rem;
+  grid-template-columns: 4.2rem auto;
+  grid-template-rows: auto;
+  padding-top: 0.85rem;
+  word-break: break-all;
+}
+
+.comment img{
+  border-radius: 100%;
+  border: 0.2rem solid #f4f4f4;
+  max-height: 3.8rem;
+}
+
+.comment span{
+  color: grey;
+}
+
+.comment a{
+  text-decoration: none;
+  color: #212529;
 }
 
 #profile_pic img{
-  margin: 5px 0 0 0;
-  max-width: 80px;
-  padding: 10px;
+  margin: 0.4375rem 0 0 0.3125rem;
+  max-width: 4.6875rem;
+  padding: 0.625rem;
   border-radius: 100%;
 }
 
 #profile_name p{
-  margin-top: 22px;
-  line-height: 120%;
+  margin-top: 1.4375rem;
+  line-height: 130%;
 }
 
 #dotdotdot img{
-  /* display: block; */
-  max-width: 30px;
-  margin: 32px 0 0 20px;
+  max-width: 1.875rem;
+  margin: 2rem 0 0 0.1875rem;
+}
+
+#dotdotdot img:hover{
+  transform: rotate(360deg);
+  transition-duration: 0.35s;
+  cursor: pointer;
+}
+
+#heart_icon{
+  padding-left: 0.625rem;
+  margin-bottom: 1rem;
+  color: #f4f4f4;
+}
+
+#heart_icon img{
+  max-height: 2rem;
+  margin: 0 0.3125rem;
+  background: #f4f4f4;
+}
+
+#heart_icon img:hover{
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 red);
+  filter: opacity(0.5) drop-shadow(0 0 0 red);
+  transition-duration: 0.17s;
+}
+
+#heartBtn:checked ~ label > img{
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 red);
+  filter: opacity(0.5) drop-shadow(0 0 0 red);
 }
