@@ -127,13 +127,11 @@ label{
 #heart_icon{
   padding-left: 0.625rem;
   margin-bottom: 1rem;
-  color: #f4f4f4;
 }
 
 #heart_icon img{
   max-height: 2rem;
   margin: 0 0.3125rem;
-  background: #f4f4f4;
 }
 
 #heart_icon img:hover{
