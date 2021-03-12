@@ -25,7 +25,7 @@ comments: false
       </div>
     </header>
     <figure>
-      <img src="assets/images/me_in_seamarq_1_cut.jpg" />
+      <img src="assets/images/KakaoTalk_20210305_000309488.jpg" />
     </figure>
     <section>
       <div id="heart_icon">
@@ -51,7 +51,7 @@ comments: false
       </div>
     </section>
     <section class="description">
-      <strong>YangYoungGeon</strong> Hi, I am Young-Geon and I am passionate about web development and quantitative investment. I enjoy meditation and ride bike to keep my conciousness strong and healthy. Sometimes I listen to music like R&B, Hiphop, and Jazz, or watch a good movie to relax.
+      <strong>YangYoungGeon</strong> Hi, I am Young-Geon and I am passionate about web development and quantitative investment. I enjoy meditation and riding bike to keep myself strong and healthy. Sometimes I listen to music like R&B, Hiphop, and Jazz, or watch a good movie to relax.
       <br>
       <div>
         <span>March 12, 2021</span>
@@ -72,7 +72,7 @@ comments: false
         <a target="_blank" href="http://english.hhi.co.kr/"><img src="assets/images/HHI_square.jpg" /></a>
       </div>
       <div>
-        <a target="_blank" href="http://english.hhi.co.kr/"><strong>Hyundai_Heavy_Industries</strong></a> He put a lot of effort into our company as a <em>naval architect</em> for 1 year and 9 months at initial design department of shipbuilding division. Especially, his work of simple python program was helpful for automation of hard work.
+        <a target="_blank" href="http://english.hhi.co.kr/"><strong>Hyundai_Heavy_Industries</strong></a> He put a lot of effort into our company as a <em>Naval Architect</em> for 1 year and 9 months at initial design department of shipbuilding division. Especially, his work of simple python program was helpful for automation of hard work.
         <br>
         <span>July, 2019 ~ April, 2021</span>
       </div>

@@ -28,6 +28,10 @@ label{
   cursor: pointer;
 }
 
+em{
+  background-color: #fab1ce;
+}
+
 .boldic{
   font-weight: bold;
 }
@@ -66,7 +70,7 @@ label{
 .description{
   margin: 0 1rem 0 1.2rem;
   display: block;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .description span{
@@ -83,7 +87,7 @@ label{
   grid-template-columns: 4.2rem auto;
   grid-template-rows: auto;
   padding-top: 0.85rem;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .comment img{
