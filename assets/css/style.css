@@ -8,9 +8,20 @@
   }
 
   .article-post {
-    font-size: 2.7vw;
+    font-size: 18px;
   }
 }
+
+@media(max-width: 480px){
+  html{
+    font-size: 2.7vw;
+  }
+
+  .article-post {
+    font-size: 15px;
+  }
+}
+
 /*
 @media(max-width: 480px){
   html{
@@ -72,6 +83,10 @@ em{
   white-space: nowrap;
 }
 
+.likes div{
+  vertical-align: middle;
+}
+
 .likes img{
   border-radius: 100%;
   margin-left: 0.85rem;
@@ -93,10 +108,12 @@ em{
 .likes span{
   position: relative;
   right: 3.5rem;
+  display: block;
+  margin-top: 0.15rem;
 }
 
 .description{
-  margin: 0 1rem 0 1.2rem;
+  margin: 0 1rem 0 0.9rem;
   display: block;
   word-break: break-word;
 }
