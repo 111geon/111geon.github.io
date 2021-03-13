@@ -29,7 +29,8 @@ label{
 }
 
 em{
-  background-color: #fab1ce;
+  font-style: normal;
+  color: red;
 }
 
 .boldic{
@@ -45,13 +46,13 @@ em{
 }
 
 .likes{
-  grid-template-columns: 6.5rem auto;
+  grid-template-columns: 9.5rem auto;
   grid-template-rows: 2.3rem;
 }
 
 .likes img{
   border-radius: 100%;
-  border: 0.13rem solid #f4f4f4;
+  border: 0.06rem solid #f4f4f4;
   margin-left: 0.85rem;
   max-height: 2rem;
 }
@@ -62,9 +63,15 @@ em{
   z-index: -1;
 }
 
+.likes #belowtwo{
+  position: relative;
+  right: 3.9rem;
+  z-index: -2;
+}
+
 .likes span{
   position: relative;
-  right: 2rem;
+  right: 3.5rem;
 }
 
 .description{
@@ -123,9 +130,12 @@ em{
 }
 
 #dotdotdot img:hover{
+  cursor: pointer;
+}
+
+#dotBtn:checked ~ label > img{
   transform: rotate(360deg);
   transition-duration: 0.35s;
-  cursor: pointer;
 }
 
 #heart_icon{

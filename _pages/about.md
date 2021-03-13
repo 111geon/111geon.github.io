@@ -21,7 +21,8 @@ comments: false
         </p>
       </div>
       <div id="dotdotdot">
-        <img src="assets/images/dotdotdot.png" />
+        <input type="checkbox" id="dotBtn">
+        <label for="dotBtn" class="dotBtn"><img src="assets/images/dotdotdot.png" /></label>        
       </div>
     </header>
     <figure>
@@ -44,7 +45,8 @@ comments: false
     <section class="likes">
       <div>
         <img src="assets/images/wecode.png" />
-        <img id="below" src="assets/images/me_round.jpg" />
+        <img id="below" src="assets/images/HHI_square.jpg" />
+        <img id="belowtwo" src="assets/images/me_round.jpg" />
       </div>
       <div>
         <span>Liked by <strong>Wecode</strong> and <strong>others</strong></span>
