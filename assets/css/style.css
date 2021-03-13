@@ -2,6 +2,26 @@
   border: 1px solid red;
 } */
 
+@media(max-width: 650px){
+  html{
+    font-size: 2.5vw;
+  }
+
+  .article-post {
+    font-size: 2.5vw;
+  }
+}
+/*
+@media(max-width: 480px){
+  html{
+    font-size: 13.3px;
+  }
+
+  .article-post {
+    font-size: 12px;
+  }
+} */
+
 header{
   display: grid;
   grid-template-columns: 5.625rem auto 3.125rem;
@@ -15,7 +35,7 @@ header span{
 
 section{
   display: grid;
-  grid-template-columns: 12.5rem auto 12.5rem;
+  grid-template-columns: 14rem auto 12.5rem;
   grid-template-rows: 3.125rem;
 }
 
@@ -48,11 +68,12 @@ em{
 .likes{
   grid-template-columns: 9.5rem auto;
   grid-template-rows: 2.3rem;
+  overflow: visible;
+  white-space: nowrap;
 }
 
 .likes img{
   border-radius: 100%;
-  border: 0.06rem solid #f4f4f4;
   margin-left: 0.85rem;
   max-height: 2rem;
 }
@@ -65,7 +86,7 @@ em{
 
 .likes #belowtwo{
   position: relative;
-  right: 3.9rem;
+  right: 4.1rem;
   z-index: -2;
 }
 
@@ -121,7 +142,7 @@ em{
 
 #profile_name p{
   margin-top: 1.4375rem;
-  line-height: 130%;
+  line-height: 1.5rem;
 }
 
 #dotdotdot img{
@@ -134,8 +155,8 @@ em{
 }
 
 #dotBtn:checked ~ label > img{
-  transform: rotate(360deg);
-  transition-duration: 0.35s;
+  transform: rotate(18000deg);
+  transition-duration: 6s;
 }
 
 #heart_icon{
