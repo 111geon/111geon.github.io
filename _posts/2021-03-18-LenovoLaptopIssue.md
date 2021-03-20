@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "About Lenovo Laptop"
+title:  "Lenovo Laptop Issue"
 author: Younggeon
 categories: [ DailyLife ]
 tags: [ Laptop, Lenovo ]
-image: assets/images/2021-03-18-AboutLenovoLaptop/dont-buy-lenovo.jpg
+image: assets/images/2021-03-18-LenovoLaptopIssue/dont-buy-lenovo.jpg
 ---
 
 > 새로 산 LENOVO 노트북이 3개월만에 망가져 버렸다. 😢
