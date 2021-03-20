@@ -2,8 +2,8 @@
 layout: post
 title:  "Lenovo Laptop Issue"
 author: Younggeon
-categories: [ DailyLife ]
-tags: [ Laptop, Lenovo ]
+categories: [ Daily-Life ]
+tags: [ Review ]
 image: assets/images/2021-03-18-LenovoLaptopIssue/dont-buy-lenovo.jpg
 ---
 

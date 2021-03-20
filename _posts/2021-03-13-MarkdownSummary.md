@@ -2,8 +2,8 @@
 layout: post
 title:  "Markdown Summary"
 author: Younggeon
-categories: [ HTML ]
-tags: [ Markdown, Github ]
+categories: [ Web-Programming ]
+tags: [ Markdown, HTML ]
 image: assets/images/2021-03-13-Markdown/1200px-Markdown-mark.svg.png
 ---
 
