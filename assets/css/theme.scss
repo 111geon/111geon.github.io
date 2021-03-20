@@ -28,6 +28,10 @@ a {
     color: darken($primary, 24%);
 }
 img {
+    max-width:100%;
+    height:auto;
+}
+img.featured-image {
     max-width:80%;
     height:auto;
 }
@@ -445,7 +449,7 @@ img, img:hover {
     font-size:18px;
     p {
         margin-top:0px;
-        margin-bottom:8px;
+        margin-bottom:20px;
     }
     code {
         font-size: 15px;
