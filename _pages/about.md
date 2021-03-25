@@ -21,25 +21,41 @@ comments: false
         </p>
       </div>
       <div id="dotdotdot">
-        <input type="checkbox" id="dotBtn">
+        <input class="checkbox" type="checkbox" id="dotBtn">
         <label for="dotBtn" class="dotBtn"><img src="assets/images/dotdotdot.png" /></label>        
       </div>
     </header>
+
     <figure>
-      <img src="assets/images/KakaoTalk_20210305_000309488.jpg" />
+      <div class="button-container">
+        <input class="prev-button" type="image" src="/assets/images/left-arrow.png" onclick="seeBeforeImg()">
+        <input class="next-button" type="image" src="/assets/images/right-arrow.png" onclick="seeNextImg()">
+      </div>
+
+      <div class="img-container">
+        <ul class="slider">
+          <li class="item"></li>
+          <li class="item"></li>
+          <li class="item"></li>
+        </ul>
+      </div>
     </figure>
+
     <section>
       <div id="heart_icon">
-        <input type="checkbox" id="heartBtn">
+        <input class="checkbox" type="checkbox" id="heartBtn">
         <label for="heartBtn" class="heartBtn"><img src="assets/images/instagram_heart.png" /></label>
 
         <a target="_blank" href="https://github.com/111geon"><img src="assets/images/GitHub-Mark-32px.png" /></a>
         <a target="_blank" href="https://www.linkedin.com/in/young-geon-yang-289a7b176/"><img src="assets/images/iconfinder_linkedin_square_black_107092.png" /></a>
         <a target="_blank" href="mailto:yangdaz3@gmail.com"><img src="assets/images/iconfinder_icon-email_211660.png" /></a>
       </div>
-      <div id="blue_dot">
-      </div>
-      <div id="bookmark_icon">
+      <div>
+        <ul class="blue-dot">
+          <li class="blue-dot"><img src="/assets/images/clipart477493_grey.png" /></li>
+          <li class="blue-dot"><img src="/assets/images/clipart477493_grey.png" /></li>
+          <li class="blue-dot"><img src="/assets/images/clipart477493_grey.png" /></li>
+        </ul>
       </div>
     </section>
     <section class="likes">
@@ -79,6 +95,8 @@ comments: false
         <span>July, 2019 ~ April, 2021</span>
       </div>
     </section>
+
+    <script src = "/assets/js/aboutpage.js"></script>
 
   </body>
 </html>
