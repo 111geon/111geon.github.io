@@ -20,7 +20,7 @@ function seeNextImg() {
     i += 1;
   }
 
-  document.querySelector('ul.slider').style.left = -(100 * i) + '%' ;
+  document.querySelector('ul.slider').style.left = -(100.5 * i) + '%' ;
 
   for(let k=0; k<image_source.length; k++) {
     document.querySelector('li.blue-dot:nth-child('+(k+1)+') img').src = dot_source[0];
@@ -32,7 +32,7 @@ function seeBeforeImg() {
   if(i > 0) {
     i -= 1;
   }
-  document.querySelector('ul.slider').style.left = -(100 * i) + '%' ;
+  document.querySelector('ul.slider').style.left = -(100.5 * i) + '%' ;
 
   for(let k=0; k<image_source.length; k++) {
     document.querySelector('li.blue-dot:nth-child('+(k+1)+') img').src = dot_source[0];
