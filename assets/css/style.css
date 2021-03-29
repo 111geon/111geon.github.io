@@ -107,18 +107,22 @@ div.button-container {
 .prev-button {
   z-index: 999;
   position: relative;
-  margin: 48% 2%;
-  width: 4%;
+  margin: 47% 2%;
+  width: 6%;
   opacity: 0.5;
+  border: 0;
+  outline: 0;
 }
 
 .next-button {
   float: right;
   z-index: 999;
   position: relative;
-  margin: 48% 2%;
-  width: 4%;
+  margin: 47% 2%;
+  width: 6%;
   opacity: 0.5;
+  border: 0;
+  outline: 0;
 }
 
 

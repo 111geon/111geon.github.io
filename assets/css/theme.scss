@@ -25,7 +25,7 @@ body {
     background: #f4f4f4;
 }
 a {
-    color: darken($primary, 24%);
+    color: darken($primary, 28%);
 }
 img {
     max-width:100%;
@@ -450,13 +450,13 @@ img, img:hover {
         margin-bottom:1.5rem;
     }
     code {
-        font-size: 15px;
+        font-size: 17px;
         color: #212529;
     }
     code[class*="language-"], pre[class*="language-"] {
-        font-size:15px;
+        font-size:17px;
         margin-bottom:30px;
-        background: #fff;
+        background: #f4f4f4;
         color:inherit;
     }
     div.code-toolbar > .toolbar a, div.code-toolbar > .toolbar button, div.code-toolbar > .toolbar span {
