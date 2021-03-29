@@ -34,6 +34,8 @@ image: assets/images/2021-03-28-ImageSlide/person-1196523_1920.jpg
 
 #### 1. Container 만들기
 
+##### [ HTML ]
+
 ```html
 <figure>
   <div class="button-container">
@@ -51,6 +53,8 @@ image: assets/images/2021-03-28-ImageSlide/person-1196523_1920.jpg
 ```
 
 전체 영역인 \<figure> 안에 버튼을 담는 div.button-container가 있고 이미지를 담는 div.img-container가 있다. 그 안에 이미지들이 \<ul>안에 정렬되어있는 구조이다.
+
+##### [ CSS ]
 
 ```css
 figure {
@@ -88,6 +92,8 @@ button-container 좌우 버튼을 담는 container이므로 overflow: hidden 설
 
 #### 2. 사진 넣기
 
+##### [ HTML ]
+
 ```html
 <div class="img-container">
   <ul class="slider">
@@ -98,13 +104,15 @@ button-container 좌우 버튼을 담는 container이므로 overflow: hidden 설
 </div>
 ```
 
-사진들은 img-container 안에 있는 \<ul>안에 item으로 배열된다. 이때 아직 \<li> 태그 안에 \<img> 태그가 없다. 이는 불러올 이미지가 많아지면서 로딩 시간이 길어지게 되었고, 이로 인해 html parsing 단계에서 이미지를 로드하게 되면 페이지가 깔끔하게 불러와지지 않았다. 이에, html 문서를 먼저 parsing 하고 다 끝난 후에 javascript로 \<li> 태그에 \<img>를 넣어주는 방식으로 변경하여 페이지 로딩을 부드럽게 개선하였다. [JavaScript Parsing](#-additional)
+사진들은 img-container 안에 있는 \<ul>안에 item으로 배열된다. 이때 아직 \<li> 태그 안에 \<img> 태그가 없다. 불러올 이미지가 많아지면서 로딩 시간이 길어지게 되었고, 이로 인해 html parsing 단계에서 이미지를 로드하게 되면 페이지가 깔끔하게 불러와지지 않았다. 이에, html 문서를 먼저 parsing 하고 다 끝난 후에 javascript로 \<li> 태그에 \<img>를 넣어주는 방식으로 변경하여 페이지 로딩을 부드럽게 개선하였다. [JavaScript Parsing](#-additional)
 
 ```html
 <script src = "/assets/js/aboutpage.js"></script>
 ```
 
 js 파일을 로딩하는 script를 \<body> 태그의 가장 마지막에 배치하였다.
+
+##### [ JavaScript ]
 
 ```JavaScript
 const image_source = [];
@@ -118,6 +126,8 @@ for(let j=0; j<image_source.length; j++) {
 ```
 
 올릴 사진의 경로를 list 안에 넣어두고, for 문을 사용하여 li.item 태그들 안에 이미지 태그들을 생성하여 넣어주었다.
+
+##### [ CSS ]
 
 ```css
 ul.slider {
@@ -151,6 +161,8 @@ li.item, .blue-dot {
 
 #### 3. 버튼 만들기
 
+##### [ HTML ]
+
 ```html
 <div class="button-container">
   <input class="prev-button" type="image" src="/assets/images/left-arrow.png" onclick="seeBeforeImg()">
@@ -159,6 +171,8 @@ li.item, .blue-dot {
 ```
 
 버튼은 \<input> 태그를 이용해서 쉽게 만들 수 있다. 보통 type에 "button"을 넣지만 원하는 이미지를 버튼으로 쓰고 싶다면 type을 "image"로 하면 된다. src에 원하는 이미지 경로를 넣고, onclick 속성에 JavaScript 함수를 넣으면 된다.
+
+##### [ JavaScript ]
 
 ```JavaScript
 let i = 0;
@@ -181,6 +195,8 @@ function seeBeforeImg() {
 좌우 버튼을 눌렀을 때 작동하는 function을 정의한 내용이다.
 
 우선 현재 몇번째 사진을 보고있는지 가르키기위해 전역변수 i를 선언하고 함수를 정의했다. i가 0에서 3 사이를 벗어나지 않도록 if구문 안에서 i를 증감시켜주면 된다. 이 i에 따라 \<ul>태그의 left 속성을 바꿔주면 슬라이드 효과를 만들어줄 수 있다.
+
+##### [ CSS ]
 
 ```CSS
 .prev-button {
@@ -211,6 +227,8 @@ function seeBeforeImg() {
 
 #### 4. 사진 Indicator 만들기
 
+##### [ HTML ]
+
 ```html
 <div>
   <ul class="blue-dot">
@@ -222,6 +240,8 @@ function seeBeforeImg() {
 ```
 
 몇번째 사진을 보고있는지 가르키는 indicator는 파란색 점으로 나타내기로 했다. 우선 처음 페이지를 불러오는 시점에서는 회색점 3개를 불러온다.
+
+##### [ JavaScript ]
 
 ```JavaScript
 const dot_source = [];
@@ -270,7 +290,7 @@ function seeBeforeImg() {
 ---
 
 
-#### JavaScript Parsing:
+#### [ JavaScript Parsing ]
 크기가 큰 JavaScript 파일을 어떤식으로 불러오냐에 따라 클라이언트의 UX는 꽤 달라질 수 있다. 다음은 js 파일을 동기적 또는 비동기적으로 처리하는 4가지 방법을 정리한 내용이다.   
 [출처: 드림코딩 by 엘리](https://www.youtube.com/watch?v=tJieVCgGzhs&t=2s)
 
@@ -285,7 +305,7 @@ html을 parsing하면서 js를 fetching하고, html parsing이 끝나면 js를 e
 
 ---
 
-#### JavaScript Callback, Promise, Async & Await:
+#### [ JavaScript Callback, Promise, Async & Await ]
 다음은 JavaScript가 비동기적인 작업을 처리하는 방식에 대해서 알아본 내용이다.
 
 ##### - Callback:
