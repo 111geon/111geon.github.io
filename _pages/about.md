@@ -69,7 +69,7 @@ comments: false
       </div>
     </section>
     <section class="description">
-      <strong>YangYoungGeon</strong> Hi, I am Young-Geon and I am passionate about web development and quantitative investment. I enjoy meditation and riding bike to keep myself strong and healthy. Sometimes I listen to music like R&B, Hiphop, and Jazz, or watch a good movie to relax.
+      <strong>YangYoungGeon</strong> Hi, I am Young-Geon and I am passionate about web development and asset investment. I enjoy meditation and riding bike for my health. Sometimes I listen to music like R&B, Hiphop, and Jazz, or watch a good movie to relax.
       <br>
       <div>
         <span>March 12, 2021</span>

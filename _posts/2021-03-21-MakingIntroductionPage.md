@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Making Introduction Page"
+title:  "인스타그램 같은 자기소개 페이지 만들기"
 author: Younggeon
 categories: [ Web-Programming ]
-tags: [ HTML, CSS ]
+tags: [ HTML, CSS, Grid, Flex ]
 image: assets/images/2021-03-21-MakingIntroductionPage/bear-saying-hello.jpg
 ---
 

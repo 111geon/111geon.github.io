@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Markdown Summary"
+title:  "마크다운(Markdown) 정리"
 author: Younggeon
 categories: [ Web-Programming ]
 tags: [ Markdown, HTML ]

@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "JavaScript를 이용하여 이미지 슬라이드 만들기"
+title:  "Network 기초 정리"
 author: Younggeon
-categories: [ Web-Programming ]
-tags: [ HTML, CSS, JavaScript ]
-image: assets/images/2021-03-28-ImageSlide/person-1196523_1920.jpg
+categories: [ Web-Server ]
+tags: [ Network, ip, DNS ]
+image: assets/images/2021-03-31-NetworkBasic/social-media-3846597.png
 ---
 
-> JavaScript를 이용하여 이미지 슬라이드 버튼을 만들어보자 🤪
+> Internet이 어떻게 동작하는지에 대한 기초적인 지식 기록 🕸️
 
 ---
 

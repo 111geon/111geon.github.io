@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Lenovo Laptop Issue"
+title:  "Lenovo 노트북이 부러졌다"
 author: Younggeon
 categories: [ Daily-Life ]
 tags: [ Review ]
