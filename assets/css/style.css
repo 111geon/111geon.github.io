@@ -18,6 +18,14 @@
   }
 }
 
+.article-post {
+  max-width: 730px;
+}
+
+.article-post img {
+  display: inline;
+}
+
 header{
   display: grid;
   grid-template-columns: 5.625rem auto 3.125rem;

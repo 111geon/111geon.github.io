@@ -3,7 +3,7 @@ layout: post
 title:  "Network 기초 정리"
 author: Younggeon
 categories: [ Web-Server ]
-tags: [ Network, ip, DNS ]
+tags: [ Network, IP, DNS ]
 image: assets/images/2021-03-31-NetworkBasic/social-media-3846597.png
 ---
 

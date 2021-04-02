@@ -4,6 +4,13 @@ layout: default
 permalink: "/tags.html"
 ---
 
+<h1>Tags</h1>
+{% for tag in site.tags %}
+<a href="#{{ tag[0] }}">{{ tag[0] }}</a>
+<br>
+{% endfor %}
+<hr>
+
 {% for tag in site.tags %}
 <h4 class="mt-5 mb-neg-30" id="{{ tag[0] | replace: " ","-" }}"><span class="text-capitalize text-small badge badge-primary">{{ tag[0] }}</span></h4>
 <div class="blog-grid-container">
