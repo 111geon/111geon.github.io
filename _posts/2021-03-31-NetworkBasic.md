@@ -1,326 +1,147 @@
 ---
 layout: post
-title:  "Network 기초 정리"
+title:  "인터넷이란 무엇인가..<br>유튜브 보는 법"
 author: Younggeon
 categories: [ Web-Server ]
 tags: [ Network, IP, DNS ]
 image: assets/images/2021-03-31-NetworkBasic/social-media-3846597.png
 ---
 
-> Internet이 어떻게 동작하는지에 대한 기초적인 지식 기록 🕸️
+> 우리가 유튜브를 보게 되는 과정을 통해 Internet이 어떻게 동작하는지에 대한 기초적인 동작 원리 알아보자 🕸️
 
 ---
 
-## 🚴 Example
+## 🌐 Internet
 
-<img src="/assets/images/2021-03-28-ImageSlide/Peek 2021-03-28 02-12.gif" width="50%" height="50%" title="image slide gif" alt="image slide gif" />
+<img src="https://i.insider.com/5cdc4ba6021b4c77e42ad115?width=1136&format=jpeg" width="45%" height="45%">
 
-이전에 만들었던 <a href="https://111geon.github.io/about" target="_blank">자기소개 페이지</a>에서 사진을 여러장 보여줄 수 있도록 이미지 슬라이드 기능을 추가하였다. 좌우 버튼을 눌러 이전 사진, 다음 사진을 볼 수 있도록 하는 방식이다. 사진의 밑에는 현재 보고있는 사진이 몇번째 사진인지 알 수 있도록 파란점으로 표현하였다. 이 기능을 구현하기 위해 웹 브라우저 위에서 작동하는 언어인 JavaScript를 이용해보자.
+인터넷은 수많은 사람들이 셀 수 없는 정보를 제공하고 얻어가는 공간이다. 나이 90을 넘어가시는 필자의 할머니께서도 인터넷 TV로 뉴스를 보시니, 인터넷의 동작 원리는 모르더라도 인터넷을 쓰지 않는 사람은 찾기 힘들 것이다. 이처럼 인터넷은 전기, 수도와 같은 필수재의 지위를 얻어가는 중이며, 일론 머스크의 starlink 프로젝트(기존 인터넷선이 연결되지 않았던 소외된 지역에서도 무선으로 인터넷에 연결될 수 있다)가 상용화가 되면 인터넷에 연결되는 사람의 수는 더욱 더 증가하고 규모도 커질 것이다.
 
----
+<img src="https://cdn.pixabay.com/photo/2020/09/19/07/33/children-5583748_960_720.png" width="50%" height="50%">
 
-## 🧱 Structure
+그렇다면 이 인터넷이라는 놀라운 기술이 어떻게 작동하는지 간단하게 알아보도록 하자.
 
-<img src="/assets/images/2021-03-28-ImageSlide/스크린샷, 2021-03-28 19-26-03.jpg" title="image slide structure" alt="image slide structure" />
+인터넷에서 하려고 하는 일 자체는 사실 단순하다. 정보를 필요로 하는 컴퓨터(일반적인 사용자)와 정보를 제공하려고 하는 컴퓨터(인터넷을 통해 서비스를 제공하는 회사 및 단체)가 있어서, 이 둘 사이에서 정보를 요청하고 받는 일이 일어날 뿐이다. 이 과정을 통신이라고 하며 이 통신이 안전하고 정확하게 이루어지기 위해서 필요한 기술들은 무지 많고 복잡하다.
 
-1. [Container의 크기를 사진의 크기와 동일하게 설정하고 Container를 벗어나는 요소는 보이지 않게 설정한다.](#1-container-만들기)
-2. [Container 안에 3장의 사진을 일렬로 배열한다.](#2-사진-넣기)
-3. [버튼을 눌렀을 때 3장의 사진이 함께 좌우로 움직이도록 한다.](#3-버튼-만들기)
-4. [Container 밑에 사진의 개수만큼 회색점을 그리고, n번째 사진을 보고있을 때 n번째 회색점을 파란점으로 바꾼다.](#4-사진-indicator-만들기)
+<img src="https://cdn.pixabay.com/photo/2016/03/31/15/04/spider-web-1292978_960_720.png" width="35%" height="35%">
 
----
+세상에는 수많은 사용자 컴퓨터와 제공자 컴퓨터가 있고 이들 대부분은 인터넷선을 통해 서로 연결되어있다. 이 연결이 정말 많은 수가 그물처럼 얽혀있기 때문에 이 통신의 장, 네트워크를 "inter", "net"이라고 부르는 것이다. 이 인터넷에서는 메일을 보내고, 파일을 보내는 등 다양한 통신이 이루어질 수 있지만, 인터넷에서 이루어지는 대부분의 통신은 **웹문서를 검색하고 요청하여 회신받는 일**(이 일이 이루어지는 공간을 WEB이라 한다)이기 때문에 종종 인터넷과 웹은 같은 의미로 사용이 되곤 한다.
 
-## ⚙️ Work
+<img src="https://cdn.benzinga.com/files/imagecache/story_image_685x375C/images/story/2012/af_fang_100517-656.png" width="40%" height="40%">
 
-#### 1. Container 만들기
+여기서 웹문서에 담겨 오가는 정보가 네이버 지도이면 정보 제공자는 네이버일 것이며, 오가는 정보가 친구목록과 대화메시지이면 제공자는 카카오톡, 오가는 정보가 스트리밍 되는 음악이나 동영상이면 제공자는 유튜브나 넷플릭스가 될 것이다.
 
-##### [ HTML ]
+그런데 우리의 컴퓨터는 유튜브 컴퓨터가 어디에 있는 줄 알고 어떻게 정보를 요청하여 회신받고 사용자에게 보여줄 수 있는 것일까? 우리의 컴퓨터가 유튜브 컴퓨터로부터 동영상을 받아와 우리에게 보여주는 과정을 하나씩 알아보도록 하자.
 
-```html
-<figure>
-  <div class="button-container">
-    <input class="prev-button" type="image" src="/assets/images/left-arrow.png" onclick="seeBeforeImg()">
-    <input class="next-button" type="image" src="/assets/images/right-arrow.png" onclick="seeNextImg()">
-  </div>
-  <div class="img-container">
-    <ul class="slider">
-      <li class="item"></li>
-      <li class="item"></li>
-      <li class="item"></li>
-    </ul>
-  </div>
-</figure>
-```
-
-전체 영역인 \<figure> 안에 버튼을 담는 div.button-container가 있고 이미지를 담는 div.img-container가 있다. 그 안에 이미지들이 \<ul>안에 정렬되어있는 구조이다.
-
-##### [ CSS ]
-
-```css
-figure {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 100%;
-}
-```
-
-가장 상위 태그인 \<figure>의 position은 relative로 설정해야한다. 그렇지 않으면 사진이 나올 공간에 영역 확보가 되지 않아서 밑에 있는 요소들이 위로 올라와 사진과 겹쳐져 버린다. 후에 나오겠지만 \<figure> 아래에 있는 container와 이미지들의 position을 absolute로 설정해야하기 때문에 이런일이 벌어진다.
-
-\<figure> 영역에 높이를 정하는 것은 다소 까다로웠는데 높이를 결정할 수 있는 요소가 하위 태그에 position: absolute로 있기 때문에 height 값을 미리 설정해줄 수 없었다. 이에 \<figure>의 height는 0으로 하였고 그대신 padding-bottom을 100%로 하여 하위 태그에 있는 이미지의 크기를 반영하여 영역을 잡아줄 수 있도록 하였다.
-
-```CSS
-div.img-container {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: absolute;
-}
-
-div.button-container {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-```
-
-img-container는 \<figure> 위에 올라가 원하는 영역에서만 사진을 보이게 하는 역할을 한다. 그렇기 때문에 overflow 속성을 hidden으로 설정한다. 이미 \<figure>에서 영역의 높이를 확보해두었기 때문에 여기서는 position: absolute에 height: 100%로 설정해두어도 된다.
-
-button-container 좌우 버튼을 담는 container이므로 overflow: hidden 설정을 할 필요가 없다.
+###### 목표: 유튜브에서 아이유 딩고 킬링보이스 영상 보기 (<https://www.youtube.com/watch?v=wDfqXR_5yyQ>)
+<img src="/assets/images/2021-03-31-NetworkBasic/youtube.png" width="80%" height="80%">
 
 ---
 
-#### 2. 사진 넣기
+## 🔌 인터넷 연결하기
 
-##### [ HTML ]
+<img src="https://cdn.pixabay.com/photo/2017/01/18/11/54/wifi-1989627_960_720.png" width="50%" height="50%">
 
-```html
-<div class="img-container">
-  <ul class="slider">
-    <li class="item"></li>
-    <li class="item"></li>
-    <li class="item"></li>
-  </ul>
-</div>
-```
+유튜브를 보고 싶다면 우선은 노트북을 켜서 와이파이를 연결해야 한다. 와이파이에 연결된다는 것은 집 공유기에 의해서 만들어진 자그마한 무선 네트워크에 연결된다는 의미이다. **이 공유기의 자그마한 네트워크는 위에서 얘기한 인터넷의 거대한 네트워크와 의미적으로 다를 것이 없다**. 집 공유기에 연결된 할머니의 인터넷 TV, 어머니의 스마트폰, 나의 노트북은 하나의 작은 인터넷을 이루고 있다고 할 수 있다. 이 작은 네트워크를 **LAN**(Local Area Network)이라고 한다.
 
-사진들은 img-container 안에 있는 \<ul>안에 item으로 배열된다. 이때 아직 \<li> 태그 안에 \<img> 태그가 없다. 불러올 이미지가 많아지면서 로딩 시간이 길어지게 되었고, 이로 인해 html parsing 단계에서 이미지를 로드하게 되면 페이지가 깔끔하게 불러와지지 않았다. 이에, html 문서를 먼저 parsing 하고 다 끝난 후에 javascript로 \<li> 태그에 \<img>를 넣어주는 방식으로 변경하여 페이지 로딩을 부드럽게 개선하였다. [JavaScript Parsing](#-additional)
+그러나 우리가 원하는 유튜브의 컴퓨터는 우리집의 이 작은 네트워크 안에 있지 않다. 우리가 들어가고 싶은 유튜브(구글)의 컴퓨터는 LAN 밖의 전세계 네트워크에 있을 것이다. 이 밖의 네트워크를 **WAN**(Wid Area Network)라 한다. 이 LAN 또는 WAN 안에서 정보(동영상 등)를 요청하는 컴퓨터를 **클라이언트**라고 하며, 요청받은 정보를 회신해주는 컴퓨터를 **서버**라고 한다.
 
-```html
-<script src = "/assets/js/aboutpage.js"></script>
-```
+> 인터넷에 연결된 구글의 서버 컴퓨터 개수는 2016년 기준 250만개 정도로 추정된다.   
+> 구글의 서버 컴퓨터가 있는 data center는 북미, 남미, 유럽, 아시아에 분포되어 있다.
 
-js 파일을 로딩하는 script를 \<body> 태그의 가장 마지막에 배치하였다.
+<img src="/assets/images/2021-03-31-NetworkBasic/google-datacenter.png" width="60%" height="60%">
 
-##### [ JavaScript ]
+우리 컴퓨터가 WAN에 있는 유튜브 컴퓨터와 통신을 하기 위해서는 그 중간에 있는 공유기가 많은 일을 해주어야 한다. 컴퓨터가 공유기에 연결되면 공유기는 통신을 위해 컴퓨터에게 필요한 설정들 이것저것을 자동으로 해준다(이를 DHCP라 하고 이는 뒤에서 알아보자). 이 과정에서 설정 중 가장 중요한 ip주소 또한 자동으로 설정된다. **ip 주소를 할당받은 컴퓨터는 공유기를 통해 유튜브 서버에서 정보를 요청할 수 있다.** 여기서 공유기에 연결된 클라이언트가 LAN 밖의 컴퓨터에 접속을 하려고 할 때 공유기는 **NAT**(Network Address Translation)라는 작업을 수행해야 한다.
 
-```JavaScript
-const image_source = [];
-image_source.push("/assets/images/KakaoTalk_20210305_000309488.jpg");
-image_source.push("/assets/images/me_in_seamarq_1_cut.jpg");
-image_source.push("/assets/images/KakaoTalk_20210324_181515589.jpg");
+1. 공유기(Router)는 client가 접속하려는 주소가 내부망(LAN)에 있는지 확인한다.
+2. 없다면, Router는 접속 요청한 client의 주소를 기억해둔다.
+3. Router는 접속을 요청하는 client의 주소를 router 본인의 ip로 바꾼 뒤, WAN을 통해 접속하려고 하는 서버에 요청을 보낸다.
+4. Router는 본인이 받은 응답을 이전에 기억해둔 client에게 보낸다.
 
-for(let j=0; j<image_source.length; j++) {
-  document.querySelector('.item:nth-child('+(j+1)+')').innerHTML = "<img src="+image_source[j]+" />";
-}
-```
-
-올릴 사진의 경로를 list 안에 넣어두고, for 문을 사용하여 li.item 태그들 안에 이미지 태그들을 생성하여 넣어주었다.
-
-##### [ CSS ]
-
-```css
-ul.slider {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-
-  list-style: none;
-  white-space: nowrap;
-
-  position: absolute;
-  left: 0%;
-
-  -webkit-transition: left 0.25s;
-  -o-transition: left 0.25s;
-  transition: left 0.25s;
-}
-
-li.item, .blue-dot {
-  display: inline;
-  margin-right: -2px;
-  padding: 0;
-}
-```
-
-이미지를 담을 \<ul> 태그는 올릴 사진 3개를 묶은 덩어리로 생각할 수 있다. 우선 list-style: none을 통해 목록 앞에 붙는 장식을 없애고 white-space: nowrap 설정으로 목록이 수평적으로 배열될 수 있도록 한다. 추가로 li.item 태그의 display: inline 설정을 해주어야 수평적으로 이미지가 나올 수 있다. 이때, 이미지가 조금씩 떨어져서 출력되므로 margin-right를 적당한 음수값으로 잡아준다.
-
-이미지 슬라이드 효과를 위해선 \<ul>이 javascript에 의해 좌우로 움직일 수 있어야한다. 이를 위해 position: absolute, left: 0%로 설정하고 javascript로 left를 조절하여 이미지가 좌우로 움직일 수 있도록 한다. 여기서 transition 속성을 이용하여 슬라이드 효과의 속도를 조절할 수 있다.
+이처럼 공유기는 중간 매개체의 역할을 함으로써 집에 있는 컴퓨터가 전세계의 컴퓨터들과 통신을 할 수 있도록 해준다. 물론 우리집의 공유기도 유튜브의 컴퓨터와 직접적으로 통신할 수는 없을 것이고 우리집의 공유기보다 더 큰 공유기의 힘을 빌릴 것이다. 어쨋든 컴퓨터 사용자는 유튜브에서 아이유 딩고 킬링보이스 영상을 보기 위해서 공유기를 통해 유튜브 컴퓨터에 해당 정보를 요청할 수 있는 것이다. 하지만 여전히 사용자는 유튜브 컴퓨터에 정보 요청을 하기 위해서 유튜브 컴퓨터가 어디에 있는지를 알아야한다. 유튜브 컴퓨터를 찾아가기 위한 **주소가 필요하다는 뜻이다**.
 
 ---
 
-#### 3. 버튼 만들기
+## 📱 IP Address
 
-##### [ HTML ]
+<img src="https://cdn.pixabay.com/photo/2019/09/22/16/20/location-4496459_960_720.png" width="50%" height="50%">
 
-```html
-<div class="button-container">
-  <input class="prev-button" type="image" src="/assets/images/left-arrow.png" onclick="seeBeforeImg()">
-  <input class="next-button" type="image" src="/assets/images/right-arrow.png" onclick="seeNextImg()">
-</div>
-```
+**ip(Internet Protocol)** 주소는 네트워크 상에 접속된 컴퓨터를 가르키는 주소이다. 핸드폰 번호가 통신사의 규칙에 따라서 핸드폰에 부여되듯이, 인터넷 네트워크에 접속하는 컴퓨터는 네트워크 사용자들끼리 합의된 방식(Internet Protocol)에 따라서 컴퓨터의 주소를 부여하는 것이다. 클라이언트 컴퓨터던 서버 컴퓨터던 네트워크에 접속하려고 하는 컴퓨터는 **host**라고 한다. 이 host들에게 부여되는 ip 주소는 네트워크 영역과 host ip로 구분될 수 있다. 이렇게 구분하는 방식에는 **ip class, subnet mask**가 있다.
 
-버튼은 \<input> 태그를 이용해서 쉽게 만들 수 있다. 보통 type에 "button"을 넣지만 원하는 이미지를 버튼으로 쓰고 싶다면 type을 "image"로 하면 된다. src에 원하는 이미지 경로를 넣고, onclick 속성에 JavaScript 함수를 넣으면 된다.
+<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Ipv4_address.svg/300px-Ipv4_address.svg.png" width="50%" height="50%">
 
-##### [ JavaScript ]
+ip 주소는 위와같이 점(.)으로 구분된 4개의 영역이 있고, 이 영역은 0에서 255까지의 십진수 값을 가질 수 있다. 이는 한 영역당 256개의 십진수 숫자가 들어갈 수 있다는 뜻이고, 이는 8비트의 이진수 숫자가 들어갈 수 있다는 뜻이며, 다시말해 각 영역은 두 개의 16진수 숫자로 표현될 수 있다는 뜻이다. 여기서 가장 앞에 나오는 영역에 들어가는 숫자에 따라 ip 주소를 A, B, C, D, E 클래스로 나누고, 각 클래스 별로 해당 ip의 용도 및 성격을 정하는 것으로 네트워크 사용자들은 약속하였다. 이를 ip class라고 한다.
 
-```JavaScript
-let i = 0;
 
-function seeNextImg() {
-  if(i < image_source.length - 1) {
-    i += 1;
-  }
-  document.querySelector('ul.slider').style.left = -(100.5 * i) + '%' ;
-}
+<img src="https://t1.daumcdn.net/cfile/tistory/99068D495BE8101D34" width="50%" height="50%">
+<p style="text-align: center; margin-top: -20px;">[한국인터넷정보센터 출처]</p>
 
-function seeBeforeImg() {
-  if(i > 0) {
-    i -= 1;
-  }
-  document.querySelector('ul.slider').style.left = -(100.5 * i) + '%' ;
-}
-```
+ip class D와 E는 각각 멀티캐스팅용, 연구용이며 A, B, C는 네트워크 영역과 host 영역이 구분되는 크기에 따라 나누어진다. ip 주소에서 네트워크 영역과 host 영역을 구분하는 것은 전화번호의 국번(02, 032, 051 등)처럼 영역을 나누는 것이 네트워크 관리에 용이하기 때문이다. 위 그림을 보면 A class의 ip는 network address는 128개 뿐이지만 host address는 256x256x256인 16,777,216개나 되는 것을 볼 수 있다. 물론 이 자리들을 모두 사용할 수 있는 것은 아니지만, A class ip는 같은 네트워크 영역을 공유할 수 있는 host의 수가 무지 많은 ip라고 생각할 수 있다.
 
-좌우 버튼을 눌렀을 때 작동하는 function을 정의한 내용이다.
-
-우선 현재 몇번째 사진을 보고있는지 가르키기위해 전역변수 i를 선언하고 함수를 정의했다. i가 0에서 3 사이를 벗어나지 않도록 if구문 안에서 i를 증감시켜주면 된다. 이 i에 따라 \<ul>태그의 left 속성을 바꿔주면 슬라이드 효과를 만들어줄 수 있다.
-
-##### [ CSS ]
-
-```CSS
-.prev-button {
-  z-index: 999;
-  position: relative;
-  margin: 47% 2%;
-  width: 6%;
-  opacity: 0.5;
-  border: 0;
-  outline: 0;
-}
-
-.next-button {
-  float: right;
-  z-index: 999;
-  position: relative;
-  margin: 47% 2%;
-  width: 6%;
-  opacity: 0.5;
-  border: 0;
-  outline: 0;
-}
-```
-
-마지막으로 버튼의 css 스타일링이다. z-index:999로 이미지를 맨 위로 올리고 margin과 크기, opacity를 적절하게 설정해준다. 오른쪽에 있는 next-button은 float:right로 설정한다. 버튼을 클릭했을 때, 영역의 테두리에 선택 표시가 뜨는 것 싫어서 border:0, outline:0 설정을 해주었다.
+네트워크 작업 중 때때로 같은 네트워크 영역을 공유하는 모든 host에게 정보를 보내는 브로드캐스팅이 필요할 때가 있을 수 있다. 이러한 일을 A class ip에서 진행하면 굉장히 많은 수의 host과 통신을 하게될 것이고 이는 네트워크에 큰 부담이 될 것이다. 따라서 규모가 작은 네트워크라면 host 개수가 256개밖에 없는 C class ip를 이용하는 것이 좋을 것이다.
 
 ---
 
-#### 4. 사진 Indicator 만들기
+## 😷 Subnet Mask
 
-##### [ HTML ]
+<img src="https://cdn.pixabay.com/photo/2020/04/03/19/02/virus-4999857_960_720.png" width="50%" height="50%">
 
-```html
-<div>
-  <ul class="blue-dot">
-    <li class="blue-dot"><img src="/assets/images/clipart477493_grey.png" /></li>
-    <li class="blue-dot"><img src="/assets/images/clipart477493_grey.png" /></li>
-    <li class="blue-dot"><img src="/assets/images/clipart477493_grey.png" /></li>
-  </ul>
-</div>
-```
+사실 요즘에는 이 ip class 방식을 사용하지 않는다고 한다. C class는 host가 256개밖에 없는 반면 B class는 65,536개나 되는데, 네트워크 구축이 필요한 대부분의 회사의 규모가 이 둘 사이에 있어 네트워크가 부족하거나 낭비되는 일이 많았기 때문이다. 그래서 현재 이용하고 있는 방식은 subnet mask 방식이다. 이 방식은 ip class의 의도와 같이 ip 주소를 네트워크 영역과 호스트 영역으로 구분하는 역할을 하며 적용 원리는 아래와 같다.
 
-몇번째 사진을 보고있는지 가르키는 indicator는 파란색 점으로 나타내기로 했다. 우선 처음 페이지를 불러오는 시점에서는 회색점 3개를 불러온다.
+subnet mask: 255.255.255.0 -> 이진수: 11111111.11111111.11111111.00000000 -> 네트워크, host 구분: nnnnnnnn.nnnnnnnn.nnnnnnnn.hhhhhhhh
 
-##### [ JavaScript ]
+위의 n은 네트워크 영역을 나타내고, h는 호스트 영역을 나타낸다. 이와같이 ip 주소에 마스크를 씌우듯이 필터를 씌워 네트워크 영역을 구분하는 것을 subnet mask라고 하는 것이다. 위의 subnet mask: 255.255.255.0 은 ip class에서 C class에서의 영역 구분과 같음을 알 수 있다.
 
-```JavaScript
-const dot_source = [];
-dot_source.push("/assets/images/clipart477493_grey.png");
-dot_source.push("/assets/images/clipart477493 (1).png");
-
-document.querySelector('li.blue-dot:nth-child('+(i+1)+') img').src = dot_source[1];
-
-function seeNextImg() {
-  if(i < image_source.length - 1) {
-    i += 1;
-  }
-  for(let k=0; k<image_source.length; k++) {
-    document.querySelector('li.blue-dot:nth-child('+(k+1)+') img').src = dot_source[0];
-  }
-  document.querySelector('li.blue-dot:nth-child('+(i+1)+') img').src = dot_source[1];
-}
-
-function seeBeforeImg() {
-  if(i > 0) {
-    i -= 1;
-  }
-  for(let k=0; k<image_source.length; k++) {
-    document.querySelector('li.blue-dot:nth-child('+(k+1)+') img').src = dot_source[0];
-  }
-  document.querySelector('li.blue-dot:nth-child('+(i+1)+') img').src = dot_source[1];
-}
-```
-
-사진을 넣을 때와 같이 dot_source 리스트에 회색점과 파란색점 경로를 넣어주고 :nth-child 선택자를 이용하여 i번째 점의 src를 파란색점으로 바꿔주는 방식이다. 각 버튼을 누를 때마다 점들을 회색점으로 초기화하고 i번째 점을 파란색점으로 만들어 주어야하기 때문에 각 함수에 해당 코드를 넣어준다.
-
-완성!
+만약 subnet mask가 255.255.240.0(11111111.11111111.11110000.00000000) 이면 네트워크, host 영역 구분이 nnnnnnnn.nnnnnnnn.nnnnhhhh.hhhhhhhh 인 B 클래스와 C 클래스의 중간 크기의 네트워크도 만들 수 있을 것이다. 여기서 네트워크 영역의 자리가 8+8+4=20 개 인데, 만약 이 네트워크에 있는 host의 ip 주소가 182.215.249.9 라면 이 ip 주소는 182.215.249.9/20 으로도 표현할 수 있다. 네트워크 영역의 자리가 몇개인지 알려주는 것이다. 하지만 대체로는 ip addr: 182.215.249.9, subnet mask: 255.255.240.0 와 같이 각각 명시를 해줄 것이다.
 
 ---
 
-## ➕ Additional
+## 🤖 DHCP
 
-용량이 큰 이미지를 여러장 불러오는 작업은 클라이언트의 네트워크 환경에 따라 매우 오래걸리는 일이 될수도 있다. 이러한 작업을 html이 불러와지는 중간 단계에서 진행하면 웹 페이지가 매끄럽게 로딩되지 못한다. 이를 해결하기 위해 생각할 수 있는 방법은 다음과 같을 것이다.
-1. 이미지 로딩 작업을 \<head>에서 진행하고 이미지 로딩이 모두 완료된 후에 html 문서를 불러오도록 한다.
-2. 우선 html 문서를 불러온 후, 이미지 로딩 작업은 마지막에 처리한다.
+<img src="https://cdn.pixabay.com/photo/2013/07/13/10/42/router-157597_960_720.png" width="50%" height="50%">
 
-필자의 경우엔 유의미한 정보인 텍스트 정보를 먼저 보여주고 사진은 나중에 보여줘도 괜찮다고 판단하여 후자의 방법을 채택했다.
+이와같이 네트워크에 접속하기 위해서는 많은 규칙들을 따라야 하는데 작은 컴퓨터인 공유기는 사용자가 모바일이던 노트북이던 와이파이에 연결되면 해당 host의 \*MAC(Media Access Control) 주소를 읽어 자동으로 ip주소, subnet mask, \*\*gateway address, DNS 등을 설정해주고 바로 네트워크에서 통신을 할 수 있도록 해준다. 이와 같이 공유기가 hosts의 네트워크 설정을 와이파이 연결과 동시에 자동으로 해주는 것을 **DHCP**(Dynamic Host Configuration Protocol)라고 한다.
 
-하기 내용은 이와 관련하여 알게 된 것들을 정리한 것이다.
+> \*여기서 MAC 주소란 기계에 고유하게 할당되는 식별 주소이다. 스마트폰이던 노트북이던 기계를 만드는 회사에서 고유하게 할당하여 하드웨어에 저장되기 때문에 이 값 ip주소와는 달리 바뀌지 않는다. 이러한 MAC 주소는 공유기가 hosts에게 ip 주소 등을 할당할 때 서로를 식별하기 위해 필요하다.   
+>     
+> \*\*공유기는 외부 WAN과 소통하기 위한 문지기 역할을 하기 때문에 **gateway**라고 불리며 이 역시 gateway address라는 ip 주소를 가지고 있다. 공유기는 LAN 네트워크와 WAN 네트워크 둘 다에 속해있기 때문에 ip주소를 두 개를 가지고 있다. WAN에서의 ip 주소를 **public ip**, LAN에서의 ip를 **private ip**라고 한다.
 
----
-
-
-#### [ JavaScript Parsing ]
-크기가 큰 JavaScript 파일을 어떤식으로 불러오냐에 따라 클라이언트의 UX는 꽤 달라질 수 있다. 다음은 js 파일을 동기적 또는 비동기적으로 처리하는 4가지 방법을 정리한 내용이다.   
-[출처: 드림코딩 by 엘리](https://www.youtube.com/watch?v=tJieVCgGzhs&t=2s)
-
-##### 1. \<head>에 \<script>가 호출되는 경우:
-처음부터 완전한 페이지의 모습을 볼 수 있지만, js의 크기가 큰 경우 페이지가 열리는데 시간이 너무 오래 걸릴 수 있다.
-##### 2. \<body>의 끝에 \<script>가 호출되는 경우:
-html 요소를 빠르게 보여줄 수 있지만, js에 의존적인 요소가 많다면 UX가 안좋을 수 있다.
-##### 3. \<head>에 async를 붙여 \<script>를 호출하는 경우:
-html을 pasrsing 하면서 js를 fetching하고, fetching이 끝나면 js를 execute하는 방법, 병렬처리로 다운로드가 빠르나 js가 언제 다운로드될 지 모르기 때문에 이를 주의해야 한다.
-##### 4. \<head>에 defer을 붙여 \<script>에 호출하는 경우:
-html을 parsing하면서 js를 fetching하고, html parsing이 끝나면 js를 execute. 호출하는 js가 많을 때, 호출 순서대로 js를 실행한다. 순서가 보장되기 때문에 안전하다.
+이때, 대체로 공유기는 ip 자원을 효율적으로 관리하기 위해서 접속한 컴퓨터들의 ip를 유동 ip로 설정하고 일정한 lease time에 대해서만 ip 할당을 해준다. 그리고 공유기는 지속적으로 접속한 컴퓨터가 네트워크를 계속 사용 중인지 확인하고 사용 중이라면 해당 ip의 lease time을 갱신해준다. 이렇게 함으로써, 네트워크에 접속하지 않은 컴퓨터가 귀중한 ip 자원을 차지하고 있지 않도록 한다.
 
 ---
 
-#### [ JavaScript Callback, Promise, Async & Await ]
-다음은 JavaScript가 비동기적인 작업을 처리하는 방식에 대해서 알아본 내용이다.
+## 📖 DNS
 
-##### - Callback:
-함수 안에 인자로 들어가는 함수. 비동기적으로 처리되는 작업을 받아서 결과가 나온 후에 다음 함수에 넘겨주는 방식으로 만들어, 비동기적으로 처리되는 작업의 결과를 이용하기 위해 쓸 수 있다.
-##### - Promise:
-비동기적으로 처리되는 작업의 결과를 이용하는 callback의 역할을 동일하게 하되, 좀 더 가독성 좋고 깔끔하게 정리할 수 있다. 함수에 상태가 부여된다(pending, fulfilled, rejected).
-  - resolve: 함수 작업이 성공적으로 완료되었을 때 호출되는 작업,
-  - rejected: 오류 발생시 호출되는 작업.
+<img src="https://cdn.pixabay.com/photo/2016/10/04/13/05/name-1714231_960_720.png" width="30%" height="30%">
 
-##### - Async & Await:
-promise와 같이 비동기적인 작업을 처리하는데 사용하지만 promise.then보다 더 세련되게 result 값을 받기 위해 await를 사용한다.
+아이유 딩고 킬링보이스 영상을 보기 위해서 인터넷 연결과 ip 주소 설정까지 마쳤다(컴퓨터가 자동으로 해주었지만). 이제 웹 브라우저를 키고 유튜브 컴퓨터의 ip 주소를 주소창에 입력하면 된다. 그런데 우리는 유튜브 컴퓨터의 ip 주소를 모른다. 대신 youtube.com이라는 주소를 안다. 이렇게 사람이 기억하기 쉽게 표기되는 주소를 **Domain Name**이라고 한다.
+
+전세계에 있는 웹사이트들의 도메인 이름과 ip 주소를 짝지어서 저장해 놓은 서버 컴퓨터를 **DNS(Domain Name Server)**라고 하며, 우리가 웹 브라우저에 youtube.com을 입력하면 컴퓨터는 자동으로 등록된 DNS(이또한 공유기가 DHCP를 수행할 때 자동적으로 지정된다)에 youtube.com의 ip 주소를 물어보고 응답받아서 주소창에 입력하는 것이다. 실제로 컴퓨터가 DNS로부터 ip 주소를 받아오는 일은 한번에 이루어지지 않고, 안전상 세계 곳곳에 퍼져있는 다양한 DNS로부터 단계적으로 정보를 받아와 ip 주소를 받는다.
+
+<img src="/assets/images/2021-03-31-NetworkBasic/DNS-egoing.png" width="80%" height="80%">
+<center>[출처: <a href="https://opentutorials.org/course/3276/20307">생활코딩 DNS</a>]</center>
+
+컴퓨터가 example.com 도메인의 ip 주소를 찾아가는 과정:
+1. 컴퓨터는 요청받은 도메인의 주소(example.com)가 컴퓨터 내부에 저장된 hosts 파일(Domain Name들을 ip 주소와 짝지어놓은 목록)에 있는지 확인하고 있다면, 그 값을 반환한다.
+2. 만약 없다면, 지정된 public DNS(DHCP에 의해 자동으로 지정된 DNS)에 요청받은 도메인의 주소를 물어본다.
+3. DNS 서버는 요청받은 도메인의 주소(example.com)를 내부적으로 저장(cache)해 두었는지 확인하여 있다면, 그 값을 반환한다.
+4. 만약 없다면, DNS 서버는 a.root-servers.net이라는 Root Name Server(ICANN이라는 단체에서 관리하는)에 .com 도메인을 저장하고 있는 Name Server가 누구인지 물어보고 a.gtld-servers.net이 가지고 있다고 응답 받는다.
+5. DNS 서버는 a.gtld-servers.net이라는 Top-level domain에게 example.com의 주소를 가지고 있는 Name Server가 누구인지 물어보고 a.iana-servers.net이 가지고 있다고 응답 받는다.
+6. DNS 서버는 a.iana-servers.net이라는 authoritative name server에게 example.com의 주소를 물어보고 93.184.216.34라는 응답을 받는다.
+7. DNS 서버는 처음 example.com의 주소를 물어본 컴퓨터에게 93.184.216.34를 회신해준다.
+
+youtube.com의 경우 example.com과 달리 넓은 ip 대역폭을 가지고 이를 관리하지만 DNS 서버가 하는 일은 다름이 없다.
+
+이제 아이유 딩고 킬링보이스 영상에 가까워졌다. 해당 영상의 링크 <https://www.youtube.com/watch?v=wDfqXR_5yyQ>를 보면 youtube.com 뒤에 /watch?v=wDfqXR_5yyQ 가 추가로 있는 것을 알 수 있다. 이는 유튜브 서버 컴퓨터에 접속하여 /watch 경로에 들어가 매개변수 v를 wDfqXR_5yyQ로 전달한다는 뜻이다. 이와 같이 주소를 표시하는 방식을 **URL(Uniform Resource Locator)**라고 한다. 다만 요즘에는 주소 요청을 통해 파일을 받아오는 일 뿐만 아니라 실제 파일이 없어도 특별한 동작을 호출하는 경우가 많기 때문에, 파일 위치를 나타내는 Locator 보다 주소를 구분하는 Identifier라는 말을 써서 **URI(Uniform Resource Identifier)**라고 하는 경우가 많다고 한다.
+
+어쨋든 웹 브라우저에 주소를 입력하면 컴퓨터는 그 주소로 들어가 정보를 받아오고, 받아온 정보를 웹 브라우저(크롬, 파이어폭스, 엣지 등)가 처리하여 사용자에게 컨텐츠가 보여지게 되는 것이다.
 
 ---
 
 ## ✔️ 마무리
 
-- JavaScript로 DOM을 다룸으로써 이미지 슬라이드 기능을 만들어 보았다.
-- JavaScript에서 load가 큰 작업을 처리하는 방식들에 대해서 알아보았다.
+<img src="/assets/images/2021-03-31-NetworkBasic/youtube.png" width="80%" height="80%">
+
+아이유 딩고 킬링보이스 영상의 링크 <https://www.youtube.com/watch?v=wDfqXR_5yyQ>를 누르면 웹 브라우저는 자동으로 주소창에 해당 주소를 입력해 영상이 담긴 페이지를 보여준다. 마침내 사용자는 영상을 즐겁게 시청할 수 있게 되었다. 이 과정 중 거의 모든 일이 컴퓨터에 의해서 자동으로 이루어지기 때문에, 사용자는 컴퓨터가 수없이 많은 약속 아래서 이런저런 설정을 하고 쏘아보낸 신호가 전세계 이곳저곳의 컴퓨터를 들렀다가 돌아와 가공되어 유튜브 동영상을 보여주기까지에 이르는 험난한 여정을 모르고 있어도 편하게 영상을 시청할 수 있는 것이다.
+
+이렇게 보니 집에서 편하게 보는 유튜브, 넷플릭스가 더욱 더 달달하게 느껴진다. 다음에는 인터넷 통신이 이루어질 때 클라이언트 입장이 아닌 서버 입장에서 어떤 일이 일어나는 지에 대해서도 알아보자.
