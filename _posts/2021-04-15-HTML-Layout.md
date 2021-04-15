@@ -2,7 +2,7 @@
 layout: post
 title:  "HTML의 Layout"
 author: Younggeon
-categories: [ Web-Programming ]
+categories: [ TIL ]
 tags: [ CSS ]
 image: https://cdn.pixabay.com/photo/2016/11/24/20/30/architecture-1857175_960_720.jpg
 ---
