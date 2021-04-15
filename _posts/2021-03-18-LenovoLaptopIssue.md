@@ -2,8 +2,8 @@
 layout: post
 title:  "Lenovo 노트북이 부러졌다"
 author: Younggeon
-categories: [ Daily-Life ]
-tags: [ Review ]
+categories: [ Life ]
+tags: [ Review, Lenovo, Laptop ]
 image: assets/images/2021-03-18-LenovoLaptopIssue/dont-buy-lenovo.jpg
 ---
 
