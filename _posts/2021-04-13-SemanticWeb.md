@@ -2,7 +2,7 @@
 layout: post
 title:  "Semantic Web에 대하여"
 author: Younggeon
-categories: [ TIL ]
+categories: [ Web-Programming ]
 tags: [ HTML ]
 image: https://cdn.pixabay.com/photo/2017/06/12/03/33/seo-2394237_960_720.jpg
 ---

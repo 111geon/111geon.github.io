@@ -2,7 +2,7 @@
 layout: post
 title:  "Python - Literal String Interpolation"
 author: Younggeon
-categories: [ TIL ]
+categories: [ Web-Programming ]
 tags: [ Python ]
 image: https://cdn.pixabay.com/photo/2016/11/13/21/46/sheep-1822137_960_720.jpg
 ---
